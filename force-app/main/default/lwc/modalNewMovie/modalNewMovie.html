@@ -1,0 +1,38 @@
+<template>
+    <div class="slds-m-around_medium">
+        <template if:true={showModal}>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <div role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- modal header -->
+                    <header class="slds-modal__header">
+                        <h2 class="slds-text-heading_medium">New Movie</h2>
+                        <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                    </header>
+                    <!-- modal body-->
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-input label="Name" value={name} onchange={handleNameChange}></lightning-input>
+                        <lightning-input type="url" label="Image URL" value={image} onchange={handleImageChange}></lightning-input>
+                        <lightning-input type="search" label="Actors" is-loading value={actors} onchange={handleActorsChange}></lightning-input>
+                        <lightning-combobox title="Category"
+                                            name="myCategories"
+                                            label="Category"
+                                            value={selectedValue}
+                                            options={myOptions}
+                                            onchange={handleValueChange}>
+                        </lightning-combobox>
+                        <lightning-textarea label="Description" value={email} onchange={handleDescriptionChange}></lightning-textarea>
+                    </div>
+                    <!-- modal footer -->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+                        <button class="slds-button slds-button_brand" onclick={handleSubmit}>Save</button>
+                    </footer>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

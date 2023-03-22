@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-grid slds-wrap">
+        <lightning-card class="slds-col slds-size_12-of-12" title="Search Movies" >
+            <div>
+                <lightning-button variant="brand" label="New Movie" title="New Movie" onclick={openModal} class="slds-float_right slds-m-right_x-small" ></lightning-button>
+            </div> 
+            <lightning-input type="text" label="Search Movie" class="slds-align_absolute-center" style="width:30%;"></lightning-input> 
+        </lightning-card>
+   </div>
+    <div class="slds-grid slds-wrap">
+        <lightning-card title="List of Movies" class="slds-col slds-size_12-of-12">
+            <div class="slds-grid slds-wrap">
+                <template for:each={movies} for:item="movie" >
+                    <c-child-movie-result key={movie.Name} movie={movie} class="slds-col slds-size_1-of-3 slds-p-horizontal_medium slds-m-top_small"></c-child-movie-result>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+    <c-modal-new-movie show-modal={showModal} onclosemodal={closeModal}></c-modal-new-movie>
+
+</template> 
